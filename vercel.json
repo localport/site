@@ -1,0 +1,5 @@
+{
+	"rewrites": [
+		{ "source": "/api(.*)", "destination": "http://api.localport.co$1" }
+	]
+}
