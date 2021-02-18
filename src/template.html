@@ -11,7 +11,22 @@
     <link rel="icon" type="image/png" href="favicon.png" />
 
     <script type="text/javascript">
-      document.documentElement.setAttribute("data-theme", "dark");
+      let theme = {};
+      theme.stored = window.localStorage.getItem("theme");
+      theme.system = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+      theme.calculated = !!theme.stored ? theme.stored : theme.system;
+
+      if (theme.calculated === "dark") {
+        // if theme is dark, set background and data-theme
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.documentElement.style.background = "#000";
+      }
+      // Remove background when loaded otherwise when theme changed some areas look white
+      window.addEventListener("load", () => {
+        document.documentElement.removeAttribute("style");
+      });
     </script>
 
     <!-- Sapper creates a <script> tag containing `src/client.js`
