@@ -1,20 +1,24 @@
 <script>
-  import { stores } from "@sapper/app";
-  const { session } = stores();
-
-  import { onMount } from "svelte";
-  onMount(async () => {
-    $session = { who: "nav" };
-  });
-
   export let segment;
+
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
+  import LocalportLogo from "./LocalportLogo.svelte";
+  import { Text, Link, IconSliders } from "geist-ui";
 </script>
 
 <nav>
-  <div class="left" />
-  <div class="center">{JSON.stringify($session)}</div>
+  <div class="left" on:click={(event) => dispatch("toggleMenu", event)}>
+    <IconSliders size={20} />
+  </div>
+  <Link rel="prefetch" href="/">
+    <div class="center">
+      <LocalportLogo size={22} />
+    </div>
+  </Link>
   <div class="right">
-    <a class="signup" rel="prefetch" href="/signup">Sign Up</a>
+    <Link rel="prefetch" href="/signup" block>Sign Up</Link>
   </div>
 </nav>
 
@@ -26,14 +30,15 @@
     top: 0;
     height: 64px;
     margin: 0 auto;
-    padding: 0 4vw;
+    padding: 0 6vw;
     z-index: 1;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    box-shadow: 0 -2px 6px rgba(var(--foreground-rgb), 0.03);
+    background-color: var(--background);
+    box-shadow: 0 -2px 6px rgba(var(--foreground-rgb), 0.2);
 
     .left,
     .center,
