@@ -1,6 +1,5 @@
 <script>
-  import Window from "../geist-ui/Window.svelte";
-  import Snippet from "../geist-ui/Snippet.svelte";
+  import { Snippet, Window, Select } from "geist-ui";
 </script>
 
 <svelte:head>
