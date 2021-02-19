@@ -5,6 +5,7 @@
   import { onMount, onDestroy } from "svelte";
   import { stores } from "@sapper/app";
   const { session } = stores();
+  $session.theme = {};
 
   import "geist-ui/dist/geist-ui.css";
   import Nav from "../components/Nav.svelte";
@@ -24,15 +25,20 @@
         ? "dark"
         : "light",
     };
-    session.subscribe((data) => {
-      // save theme to localstorage so remember what user want
-      window.localStorage.setItem("theme", data.theme.stored);
-      document.documentElement.setAttribute(
-        "data-theme",
-        !!data.theme.stored ? data.theme.stored : data.theme.system
-      );
-    });
   });
+
+  // Deconstructing, why?
+  // if used like $session.theme.store, hook runs every time store changes, like $session.user.
+  // https://svelte.dev/repl/7154107d89584fe29ee10c93969112c2?version=3.17.1
+  $: ({ theme } = $session);
+  $: ({ stored: themeStored, system: themeSystem } = theme);
+  $: process.browser &&
+    themeStored &&
+    window.localStorage.setItem("theme", themeStored) &&
+    document.documentElement.setAttribute(
+      "data-theme",
+      !!themeStored ? themeStored : themeSystem
+    );
 </script>
 
 <Nav {segment} on:toggleMenu={() => (isMenuOpen = !isMenuOpen)} />
