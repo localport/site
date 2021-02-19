@@ -1243,7 +1243,7 @@ function-bind@^1.1.1:
 
 geist-ui@localport/geist-ui:
   version "0.0.2"
-  resolved "https://codeload.github.com/localport/geist-ui/tar.gz/060f68f418267659ffbadb1921d2c442196780f0"
+  resolved "https://codeload.github.com/localport/geist-ui/tar.gz/2792d6a669cf2f190e7f5c752914d01915e1fa56"
   dependencies:
     compression "^1.7.4"
     polka "^0.5.2"

@@ -2,8 +2,6 @@
   export let segment;
   export let isOpen = false;
 
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
   import { stores } from "@sapper/app";
   const { session } = stores();
 
@@ -11,6 +9,7 @@
     Button,
     Link,
     Select,
+    SelectOption,
     Spacer,
     IconTag,
     IconCloud,
@@ -53,10 +52,10 @@
 
   <Spacer y={1} />
 
-  <Select on:change={(event) => console.log(event.target)}>
-    <option prefix={IconDisplay}>System</option>
-    <option>Light</option>
-    <option>Dark</option>
+  <Select bind:value={$session.theme.stored}>
+    <SelectOption prefix={IconDisplay} value="">System</SelectOption>
+    <SelectOption prefix={IconSun} value="light">Light</SelectOption>
+    <SelectOption prefix={IconMoon} value="dark">Dark</SelectOption>
   </Select>
 </aside>
 
