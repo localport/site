@@ -52,4 +52,13 @@
       margin: 0;
     }
   }
+
+  .features > .feature {
+    display: flex;
+    flex-wrap: wrap;
+
+    > .showdown {
+      flex-basis: 100%;
+    }
+  }
 </style>
