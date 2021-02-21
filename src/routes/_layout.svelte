@@ -33,12 +33,12 @@
   $: ({ theme } = $session);
   $: ({ stored: themeStored, system: themeSystem } = theme);
   $: process.browser &&
-    themeStored &&
-    window.localStorage.setItem("theme", themeStored) &&
+    (themeStored || themeStored === "") && // system: ""
+    (window.localStorage.setItem("theme", themeStored),
     document.documentElement.setAttribute(
       "data-theme",
       !!themeStored ? themeStored : themeSystem
-    );
+    ));
 </script>
 
 <Nav {segment} on:toggleMenu={() => (isMenuOpen = !isMenuOpen)} />
