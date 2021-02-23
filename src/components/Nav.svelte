@@ -13,7 +13,7 @@
     <IconSliders size={20} />
   </div>
   <Link rel="prefetch" href="/">
-    <div class="center">
+    <div class="icon">
       <LocalportLogo size={22} />
     </div>
   </Link>
@@ -41,7 +41,7 @@
     box-shadow: 0 -2px 6px rgba(var(--foreground-rgb), 0.2);
 
     .left,
-    .center,
+    .icon,
     .right {
       display: flex;
       align-items: center;
@@ -56,7 +56,7 @@
     .left {
       justify-content: flex-start;
     }
-    .center {
+    .icon {
       justify-content: center;
       min-width: 84px;
     }
