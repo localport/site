@@ -5,7 +5,7 @@
   const dispatch = createEventDispatcher();
 
   import LocalportLogo from "./LocalportLogo.svelte";
-  import { Text, Link, IconSliders } from "geist-ui";
+  import { Link, IconSliders } from "geist-ui";
 </script>
 
 <nav>
@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: var(--background);
+    background-color: var(--accents-1);
     box-shadow: 0 -2px 6px rgba(var(--foreground-rgb), 0.2);
 
     .left,
