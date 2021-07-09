@@ -1,8 +1,7 @@
 <script>
-  import Select from "../geist-ui/Select.svelte";
-
-  import { stores } from "@sapper/app";
-  const { session } = stores();
+  import { session } from "$app/stores";
+  
+  import { Select } from "geist-ui";
 </script>
 
 <div>

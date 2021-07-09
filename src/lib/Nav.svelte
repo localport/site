@@ -1,5 +1,5 @@
 <script>
-  export let segment;
+  export let page;
 
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();

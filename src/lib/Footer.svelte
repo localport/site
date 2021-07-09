@@ -1,6 +1,5 @@
 <script>
-  import { stores } from "@sapper/app";
-  const { session } = stores();
+import { session } from "$app/stores";
 
   import {
     Collapse,

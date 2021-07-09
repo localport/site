@@ -1,16 +1,13 @@
 <script>
-  export let segment;
   let isMenuOpen = false;
 
   import { onMount, onDestroy } from "svelte";
-  import { stores } from "@sapper/app";
-  const { session } = stores();
-  $session.theme = {};
+  import { page, session } from "$app/stores";
 
   import "geist-ui/dist/geist-ui.css";
-  import Nav from "../components/Nav.svelte";
-  import Menu from "../components/Menu.svelte";
-  import Footer from "../components/Footer.svelte";
+  import Nav from "$lib/Nav.svelte";
+  import Menu from "$lib/Menu.svelte";
+  import Footer from "$lib/Footer.svelte";
 
   // Session Initialization
   onMount(() => {
@@ -27,12 +24,13 @@
     };
   });
 
+  page.subscribe(() => (isMenuOpen = false))
   // Deconstructing, why?
   // if used like $session.theme.store, hook runs every time store changes, like $session.user.
   // https://svelte.dev/repl/7154107d89584fe29ee10c93969112c2?version=3.17.1
   $: ({ theme } = $session);
   $: ({ stored: themeStored, system: themeSystem } = theme);
-  $: process.browser &&
+  $: typeof window === "object" &&
     (themeStored || themeStored === "") && // system: ""
     (window.localStorage.setItem("theme", themeStored),
     document.documentElement.setAttribute(
@@ -41,9 +39,9 @@
     ));
 </script>
 
-<Nav {segment} on:toggleMenu={() => (isMenuOpen = !isMenuOpen)} />
+<Nav {page} on:toggleMenu={() => (isMenuOpen = !isMenuOpen)} />
 <Menu
-  {segment}
+  {page}
   isOpen={isMenuOpen}
   on:changeTheme={(theme) => $session.theme.stored === theme}
 />

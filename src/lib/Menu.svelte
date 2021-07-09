@@ -1,10 +1,9 @@
 <script>
-  export let segment;
+  export let page;
   export let isOpen = false;
 
-  import { stores } from "@sapper/app";
-  const { session } = stores();
-
+  import { session } from "$app/stores";
+  
   import {
     Button,
     Link,
@@ -20,10 +19,9 @@
     IconMoon,
   } from "geist-ui";
 
-  $: if (process.browser) {
+  $: if (typeof window === "object") {
     document.body.style.overflow = isOpen ? "hidden" : "";
   }
-  $: segment, (isOpen = false);
 </script>
 
 <aside class="menu" class:isOpen>
