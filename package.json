@@ -8,12 +8,10 @@
     "build": "svelte-kit build",
     "start": "node build"
   },
-  "dependencies": {
-    "svelte-preprocess": "^4.7.4"
-  },
   "devDependencies": {
     "@sveltejs/adapter-static": "next",
     "@sveltejs/kit": "next",
+    "svelte-preprocess": "^4.7.4",
     "autoprefixer": "^10.2.6",
     "geist-ui": "battall/geist-ui-svelte",
     "postcss": "^8.3.5",
