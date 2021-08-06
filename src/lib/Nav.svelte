@@ -67,7 +67,8 @@
 
   @media only screen and (min-width: $breakpoint-tablet) {
     nav {
-      padding: 0 calc((100vw - #{$breakpoint-tablet}) / 2 + 20px);
+      // calc((100vw - #{$breakpoint-tablet}) / 2 + 20px)
+      padding: 0 calc(-280px + 33.3333vw);
     }
   }
 </style>

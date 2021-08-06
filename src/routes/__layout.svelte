@@ -24,7 +24,7 @@
     };
   });
 
-  page.subscribe(() => (isMenuOpen = false))
+  page.subscribe(() => (isMenuOpen = false));
   // Deconstructing, why?
   // if used like $session.theme.store, hook runs every time store changes, like $session.user.
   // https://svelte.dev/repl/7154107d89584fe29ee10c93969112c2?version=3.17.1
@@ -64,7 +64,8 @@
 
   @media only screen and (min-width: $breakpoint-tablet) {
     main {
-      padding: 0 calc((100vw - #{$breakpoint-tablet}) / 2 + 20px);
+      // calc((100vw - #{$breakpoint-tablet}) / 2 + 20px)
+      padding: 0 calc(-280px + 33.3333vw);
     }
   }
 </style>
